@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import Nav from "../components/Nav";
-import Pagination from "../components/Pagination";
 import style from "../Style/Home.module.css"
 const Home = () => {
 
@@ -15,7 +14,6 @@ const Home = () => {
         </div>
       </div>
         <Nav/>  
-        <Pagination/>
     </div>
   );
 }

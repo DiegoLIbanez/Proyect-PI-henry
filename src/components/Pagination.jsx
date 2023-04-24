@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import Cards from "../view/Cards";
 import NumberPagination from "./NumberPagination";
@@ -25,6 +24,8 @@ const Pagination = () => {
   for (let i = 1; i <= Math.ceil(data.length / totalPages); i++) {
     pages.push(i);
   }
+
+
 
   const handleClick = (event) => {
     setPage(Number(event.target.id));
