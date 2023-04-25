@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import style from "../Style/Nav.module.css"
-import { getNameDogs, getTemperaments,filterTemperament, orderDogs, filterDb } from "../redux/action";
+import { getNameDogs, getTemperaments,filterTemperament, orderDogs, filterDb, OrderWeigth } from "../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import Pagination from "./Pagination";
 const Nav = () => {
@@ -34,7 +34,11 @@ const temperament = useSelector(state => state.temperaments)
     dispatch(filterDb(name))
   }
 
+  const handlerWeigth = (event) => {
+    const weigth = event.target.value;
+    dispatch(OrderWeigth(weigth))
 
+  }
 
   // funcion para mostrar los temperaments
   useEffect(() => {
@@ -49,6 +53,12 @@ const temperament = useSelector(state => state.temperaments)
               <option value="opt1">--- Select an option ---</option>
               <option value="asc">Alphabetically(A - Z)</option>
               <option value="desc">Alphabetically(Z - A)</option>
+            </select>
+
+            <select onChange={handlerWeigth}>
+              <option value="">--- All Weigth ---</option>
+              <option value="Maximo">All Weigth(Max)</option>
+              <option value="Minimo">All Weigth(Min)</option>
             </select>
 
             <select onChange={handlerDb}>
@@ -66,17 +76,10 @@ const temperament = useSelector(state => state.temperaments)
               })}
             </select>
 
-            <select >
-              <option value="All">--- All Weigth ---</option>
-              <option value="asc">All Weigth(ascending)</option>
-              <option value="desc">All Weigth(descending)</option>
-              
-            </select>
-
             <div>
               <form className={style.menu_horizontal}>
                 <input onChange={(event) => setName(event.target.value)} type="text" className={style.input} placeholder="Search"/>
-                <button onClick={handlerSubmit} className={style.boton}><span className={style.span}>Search</span></button>
+                <button onClick={handlerSubmit} className={style.boton}><span className={style.span}> Search</span></button>
               </form>
             </div>
             </div>

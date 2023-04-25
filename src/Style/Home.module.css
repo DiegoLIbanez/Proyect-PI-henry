@@ -1,71 +1,78 @@
 .titulo {
-    font-size: 60px;
-    text-align: center;
+  font-size: 60px;
+  text-align: center;
+  padding-top: 80px
 }
 
 .nav {
-    max-width: 900px;
-    margin: auto;
-    font-size: 20px;
-    margin-top: 20px;
-    margin-bottom: 50PX;
-    color: #0000;
+  max-width: 900px;
+  margin: auto;
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  color: #0000;
 }
 
 .menu_horizontal {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 .boton {
-    display: inline-block;
-    width: 150px;
-    height: 35px;
-    border-radius: 10px;
-    border: 1px solid #03045e;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.5s ease-in;
-    z-index: 1;
-    /* color: #fff; */
+  display: inline-block;
+  width: 150px;
+  height: 35px;
+  border-radius: 10px;
+  border: 1px solid #03045e;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease-in;
+  z-index: 1;
+  /* color: #fff; */
 }
 
 .boton::before,
 .boton::after {
- content: '';
- position: absolute;
- top: 0;
- width: 0;
- height: 100%;
- transform: skew(15deg);
- transition: all 0.5s;
- overflow: hidden;
- z-index: -1;
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 100%;
+  transform: skew(15deg);
+  transition: all 0.5s;
+  overflow: hidden;
+  z-index: -1;
 }
 
 .boton::before {
-    left: -10px;
-    background: #240046;
+  left: -10px;
+  background: #240046;
 }
 
 .boton::after {
-    right: -10px;
-    background: #5a189a;
-   }
+  right: -10px;
+  background: #5a189a;
+}
 
 .boton:hover::before,
 .boton:hover::after {
- width: 58%;
+  width: 58%;
 }
 
 .boton:hover .span {
-    color: #fff;
-    transition: 0.3s;
-   }
+  color: #fff;
+  transition: 0.3s;
+}
 
 .boton .span {
-    color: #fff;
-    font-size: 18px;
-    transition: all 0.3s ease-in;
-   }
+  color: #fff;
+  font-size: 18px;
+  transition: all 0.3s ease-in;
+}
+
+.headerNav {
+  min-height: 100vh;
+  background: url(https://source.unsplash.com/5xZMSUEcze0/1920x1291) no-repeat;
+  background-size: cover;
+}

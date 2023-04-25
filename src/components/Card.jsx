@@ -9,9 +9,7 @@ const Card = ({id, name, life_span, weight, height, image, temperaments}) => {
                 <img className={style.img_card} src={image} alt="" />
             </div>
             <h2 className={style.h2}>{name}</h2> 
-            <p className={style.p}>{life_span}</p>
             <p className={style.p}>{weight}</p>
-            <p className={style.p}>{height}</p>
             <p className={style.p}>{temperaments}</p>
             <br />
         </div>

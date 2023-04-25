@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux"
 
 const Pagination = () => {
   const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(6);
+  const [totalPages, setTotalPages] = useState(9);
   const [pageNumberLimit, setPageNumberLimit] = useState(5);
   const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);

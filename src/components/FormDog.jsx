@@ -2,18 +2,32 @@ import { useState, useEffect } from "react"
 import style from  "../Style/Form.module.css"
 import {useSelector, useDispatch} from "react-redux"
 import { createDogs, getTemperaments } from "../redux/action"
-import {useNavigate} from "react-router-dom"
-
+import {Link, useNavigate} from "react-router-dom"
+import { validate, verificarCampos } from "../utils/validate"
 const FormDog = () => {
+
 
   const [input, setInput] = useState({
     name:"",
     life_span:"", 
-    weight: "",
-    height:"", 
+    weightMax: "",
+    weightMin: "",
+    heightMax:"", 
+    heightMin:"", 
     image: "",
     temperament: []
   })
+
+  const [error, setError] = useState({
+    name:"",
+    life_span:"", 
+    weightMax: "",
+    weightMin: "",
+    heightMax:"", 
+    heightMin:"", 
+    image: "",
+    temperament: []
+   })
 
   const navigate = useNavigate()
 
@@ -25,6 +39,11 @@ const FormDog = () => {
       ...input,
         [e.target.name]: e.target.value
     })
+    setError(
+      validate({
+        ...input,
+          [e.target.name]: e.target.value}, error)
+    )
   }
 
   const handlerSelect = (e) => { 
@@ -37,10 +56,23 @@ const FormDog = () => {
 
   const handlerSubmit = (e) => { 
     e.preventDefault()
-    dispatch(createDogs(input))
-    console.log(input)
+
+    if (!verificarCampos(input)) {
+			alert('Completa los campos');
+      return
+		}
+
+    const Dogs = {
+      name: input.name,
+      life_span: input.life_span,
+      weight: `${input.weightMin} - ${input.weightMax}`,
+      height: `${input.heightMin} - ${input.heightMax}`,
+      image: input.image,
+      temperament: input.temperament
+    }
+    dispatch(createDogs(Dogs))
     alert("dogs creado")
-    navigate("/")
+    navigate("/home")
 
   }
 
@@ -50,15 +82,26 @@ const FormDog = () => {
   }, [])
 
   return (
-    <form className={style.form} onSubmit={handlerSubmit}>
+  <>
+  <Link to="/home"><button className={style.botonForm}>↲ GoBack</button></Link>
+  <form className={style.form} onSubmit={handlerSubmit}>
       <div className={style.note}>
         <label className={style.title}>Add Dogs</label>
       </div>
       <input placeholder="Name Dogs..." onChange={handleChange}  name="name" type="text" className={style.input_field}/>
+      <span className={style.span}>{error.name}</span>
       <input placeholder="life span..." onChange={handleChange} name="life_span" type="text" className={style.input_field}/>
-      <input placeholder="weight..." onChange={handleChange} name="weight" type="text" className={style.input_field}/>
-      <input placeholder="height..." onChange={handleChange} name="height" type="text" className={style.input_field}/>
+      <span className={style.span}>{error.life_span}</span>
+      <input placeholder="weight Min..." onChange={handleChange} name="weightMin" type="text" className={style.input_field}/>
+      <span className={style.span}>{error.weightMin}</span>
+      <input placeholder="weight Max..." onChange={handleChange} name="weightMax" type="text" className={style.input_field}/>
+      <span className={style.span}>{error.weightMax}</span>
+      <input placeholder="height Min..." onChange={handleChange} name="heightMin" type="text" className={style.input_field}/>
+      <span className={style.span}>{error.heightMin}</span>
+      <input placeholder="height Max..." onChange={handleChange} name="heightMax" type="text" className={style.input_field}/>
+      <span className={style.span}>{error.heightMax}</span>
       <input placeholder="image..." onChange={handleChange} name="image" type="text" className={style.input_field}/>
+      <span className={style.span}>{error.image}</span>
 
       <select className={style.option} onChange={handlerSelect}>
         {temperaments.map((element) =>  {
@@ -68,6 +111,7 @@ const FormDog = () => {
         <p>{input.temperament.map(elem => elem + ", ")}</p>
       <button className={style.submit}>Submit</button>
   </form>
+  </>
   )
 }
 

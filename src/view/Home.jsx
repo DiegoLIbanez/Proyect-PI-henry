@@ -1,17 +1,16 @@
 import { Link } from "react-router-dom";
 import Nav from "../components/Nav";
 import style from "../Style/Home.module.css"
+import RouterNav from "../components/RouterNav";
 const Home = () => {
 
   return (
     <div>
+     <header >
+     <RouterNav/>
+     </header>
       <div>
-      <h1 className={style.titulo}>welcome</h1>
-      <div className={style.btn_agregar}>
-        <form action="" className={style.menu_horizontal}>
-                  <Link to={"/add"}><button className={style.boton}><span className={style.span}>Add</span></button></Link>
-                </form>
-        </div>
+      <h1 className={style.titulo}>List Of Dogs</h1>
       </div>
         <Nav/>  
     </div>

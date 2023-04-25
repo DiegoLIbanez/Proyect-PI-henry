@@ -6,7 +6,7 @@
 
 .popup {
   position: absolute;
-  top: 10%;
+  top: 17%;
   left: 33%;
   height: fit-content;
   width: 450px;
@@ -95,3 +95,15 @@
   color: #ffffff;
 }
     
+.span {
+  font-size: 13px;
+  font-weight: 600;
+  color: red;
+}
+
+.botonForm {
+  position: absolute;
+  left: -99%;
+  top: 1%;
+  cursor: pointer;
+}
