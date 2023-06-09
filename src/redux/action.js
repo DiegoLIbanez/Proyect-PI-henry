@@ -10,9 +10,12 @@ export const ORDER_WEIGTH = 'ORDER_WEIGTH';
 export const DETAIL_DOGS = 'DTAIL_DOGS';
 export const CLEAN_DETAIL = 'CLEAN_DETAIL';
 
+const desarrolloApp = "http://localhost:3001/"
+
+
 export const getAllDogs = () => {
         return async function(dispatch) {
-            const response = await axios("http://localhost:3001/dogs")
+            const response = await axios(`${desarrolloApp}dogs`)
             return dispatch({type: GET_ALL_DOGS, payload: response.data})
         }
 }
@@ -39,7 +42,6 @@ export const createDogs = (payload) => {
          return  response
     }
 }
-
 
 export const datailDogs = (payload) => { 
     return async function(dispatch) {

@@ -47,12 +47,13 @@ const FormDog = () => {
   }
 
   const handlerSelect = (e) => { 
-    setInput({
-    ...input,
-    temperament: [...input.temperament, e.target.value]
-        
-    })
-  }
+      if(!input.temperament.includes(e.target.value)){
+        setInput({
+          ...input,
+          temperament: [...input.temperament, e.target.value]
+        })
+      }
+    }     
 
   const handlerSubmit = (e) => { 
     e.preventDefault()

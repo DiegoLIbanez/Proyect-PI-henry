@@ -9,23 +9,21 @@ const Pagination = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(9);
   const [pageNumberLimit, setPageNumberLimit] = useState(5);
-  const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
+  const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(7);
   const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
 
   const dispatch = useDispatch();
+
   const data  = useSelector((state) => state.allDogs);
 
   useEffect(() => {
     dispatch(getAllDogs());
   }, []);
 
-
   const pages = [];
   for (let i = 1; i <= Math.ceil(data.length / totalPages); i++) {
     pages.push(i);
   }
-
-
 
   const handleClick = (event) => {
     setPage(Number(event.target.id));

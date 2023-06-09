@@ -8,8 +8,6 @@ const Menu = ({menuOpen}) => {
         <li className={style.menuParrafo}> <Link to="/">Home</Link> </li>
         <li className={style.menuParrafo}> <Link to="/home">App Dogs</Link> </li>
         <li className={style.menuParrafo}> <Link to="/add">Add Dogs</Link> </li>
-        <li className={style.menuParrafo}> <Link to="/about">About</Link> </li>
-            
        </ul>
     </div>
   )
